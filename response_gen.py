@@ -2,7 +2,7 @@ import os
 import torch
 import json
 from transformers import pipeline, AutoTokenizer
-os.environ["HF_TOKEN"] = "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"
+os.environ["HF_TOKEN"] = "" # Enter your Hugging Face token
 
 # ========================= CONFIG =========================
 MODEL_ID = "meta-llama/Llama-3.2-1B-Instruct"
@@ -80,5 +80,6 @@ for idx, item in enumerate(data, 1):
 # Save full results
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(results, f, indent=2, ensure_ascii=False)
+
 
 print(f"\nDone! Full results with original outputs saved to: {OUTPUT_FILE}")
