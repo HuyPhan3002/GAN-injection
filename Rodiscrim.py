@@ -112,6 +112,8 @@ for epoch in range(EPOCHS):
         scaler.step(optimizer)
         scaler.update()
 
+        total_loss += loss.item()
+
         with torch.no_grad():
             predicted = (logits > 0.0).float()
             correct += (predicted == labels).sum().item()
@@ -125,4 +127,5 @@ for epoch in range(EPOCHS):
 os.makedirs(os.path.dirname(SAVE_PATH), exist_ok=True)
 torch.save(model.state_dict(), SAVE_PATH)
 tokenizer.save_pretrained(SAVE_PATH.replace(".pth", "_tokenizer"))
+
 
